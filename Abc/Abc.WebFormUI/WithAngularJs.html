@@ -12,7 +12,7 @@
 
     <script src="Js/app.js"></script>
 </head>
-<body ng-app="app" ng-controller="CategoriesController">
+<body ng-app="app">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -24,16 +24,22 @@
     </nav>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" ng-controller="CategoriesController">
 
             <table class="table table-striped">
-                <tr ng-repeat="data in data.categories">
-                    <td>{{data.CategoryName}}</td>
+                <tr ng-repeat="cat in catagories">
+                    <td><a >{{cat.categoryName}} </a></td>
+                   
                 </tr>
             </table>
         </div>
-        <div class="col-md-9">
-            Products Gelsin
+        <div class="col-md-9" ng-controller="ProductsController">
+            <table class="table table-striped">
+                <tr ng-repeat="prd in products">
+                    <td><a>{{prd.productID}} </a></td>
+
+                </tr>
+            </table>
         </div>
     </div>
 </body>
