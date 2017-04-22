@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>With Angular Js </title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/angular.min.js"></script>
+
+    <script src="Js/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="CategoriesController">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" height="35" src="Img/Logo.png">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <table class="table table-striped">
+                <tr ng-repeat="data in data.categories">
+                    <td>{{data.CategoryName}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-mini" ng-click="deleteRow(herBirIsim)"><i class="icon-trash icon-white"></i></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-9">
+            Products Gelsin
+        </div>
+    </div>
+</body>
+</html>
