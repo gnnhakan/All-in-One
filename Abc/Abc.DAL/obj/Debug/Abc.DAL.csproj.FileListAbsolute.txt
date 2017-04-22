@@ -1,0 +1,10 @@
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\Abc.DAL.dll
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\Abc.DAL.pdb
+C:\GitShare\All-in-One\Abc\Abc.DAL\obj\Debug\Abc.DAL.dll
+C:\GitShare\All-in-One\Abc\Abc.DAL\obj\Debug\Abc.DAL.pdb
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\Abc.DAL.dll.config
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\EntityFramework.dll
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\EntityFramework.xml
+C:\GitShare\All-in-One\Abc\Abc.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitShare\All-in-One\Abc\Abc.DAL\obj\Debug\Abc.DAL.csprojResolveAssemblyReference.cache
