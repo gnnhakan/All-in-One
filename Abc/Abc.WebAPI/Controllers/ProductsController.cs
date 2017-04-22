@@ -10,22 +10,20 @@ namespace Abc.WebAPI.Controllers
 {
     public class ProductsController : ApiController
     {
+        private xyzEntities entities = new xyzEntities();
+
         //Create
         public HttpResponseMessage Post([FromBody] Product product)
         {
             try
             {
-                using (xyzEntities entities = new xyzEntities())
-                {
-                    entities.Products.Add(product);
-                    entities.SaveChanges();
+                entities.Products.Add(product);
+                entities.SaveChanges();
 
-                    var message = Request.CreateResponse(HttpStatusCode.Created, product);
-                    message.Headers.Location = new Uri(Request.RequestUri +
-                        product.ProductID.ToString());
-
-                    return message;
-                }
+                var message = Request.CreateResponse(HttpStatusCode.Created, product);
+                message.Headers.Location = new Uri(Request.RequestUri +
+                product.ProductID.ToString());
+                return message;
             }
             catch (Exception ex)
             {
@@ -37,20 +35,17 @@ namespace Abc.WebAPI.Controllers
         {
             try
             {
-                using (xyzEntities entities = new xyzEntities())
+                var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
+                if (entity == null)
                 {
-                    var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
-                    if (entity == null)
-                    {
-                        return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                            "Product with Id " + id.ToString() + " not found to update");
-                    }
-                    else
-                    {
-                        entity.ProductName = product.ProductName;
-                        entities.SaveChanges();
-                        return Request.CreateResponse(HttpStatusCode.OK, entity);
-                    }
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "Product with Id " + id.ToString() + " not found to update");
+                }
+                else
+                {
+                    entity.ProductName = product.ProductName;
+                    entities.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
                 }
             }
             catch (Exception ex)
@@ -62,27 +57,22 @@ namespace Abc.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<Product> LoadProducts()
         {
-            using (xyzEntities entities = new xyzEntities())
-            {
-                entities.Configuration.ProxyCreationEnabled = false;
-                return entities.Products.ToList();
-            }
+            entities.Configuration.ProxyCreationEnabled = false;
+            return entities.Products.ToList();
         }
         //get by id 
         public HttpResponseMessage LoadProductById(int id)
         {
-            using (xyzEntities entities = new xyzEntities())
+
+            var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
+            if (entity != null)
             {
-                var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
-                if (entity != null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, entity);
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                        "Product ID " + id.ToString() + " not found");
-                }
+                return Request.CreateResponse(HttpStatusCode.OK, entity);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    "Product ID " + id.ToString() + " not found");
             }
         }
         //Delete
@@ -90,20 +80,18 @@ namespace Abc.WebAPI.Controllers
         {
             try
             {
-                using (xyzEntities entities = new xyzEntities())
+
+                var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
+                if (entity == null)
                 {
-                    var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
-                    if (entity == null)
-                    {
-                        return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                            "Product ID = " + id.ToString() + " not found to delete");
-                    }
-                    else
-                    {
-                        entities.Products.Remove(entity);
-                        entities.SaveChanges();
-                        return Request.CreateResponse(HttpStatusCode.OK);
-                    }
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "Product ID = " + id.ToString() + " not found to delete");
+                }
+                else
+                {
+                    entities.Products.Remove(entity);
+                    entities.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
             catch (Exception ex)

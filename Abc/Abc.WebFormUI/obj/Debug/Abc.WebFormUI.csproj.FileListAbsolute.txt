@@ -34,4 +34,3 @@ C:\GitShare\All-in-One\Abc\Abc.WebFormUI\bin\EntityFramework.dll
 C:\GitShare\All-in-One\Abc\Abc.WebFormUI\bin\EntityFramework.SqlServer.dll
 C:\GitShare\All-in-One\Abc\Abc.WebFormUI\bin\EntityFramework.xml
 C:\GitShare\All-in-One\Abc\Abc.WebFormUI\bin\EntityFramework.SqlServer.xml
-C:\GitShare\All-in-One\Abc\Abc.WebFormUI\obj\Debug\Abc.WebFormUI.csprojResolveAssemblyReference.cache
