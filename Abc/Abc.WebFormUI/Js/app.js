@@ -1,6 +1,6 @@
 ﻿var myapp = angular.module('app', [])
 .constant("ProductsUrl", "http://localhost:50009/mvcHome/Index2") // restapi url
-.constant("CategoriesUrl", "http://localhost:49268/api/categories/")
+.constant("CategoriesUrl", "http://localhost:51601/api/Categories/")
 myapp.controller("ProductController", function ($scope, $http, $ProductsUrl) {
     $scope.getProducts = function () {
         $scope.data = {};
