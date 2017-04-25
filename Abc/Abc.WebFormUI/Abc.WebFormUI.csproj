@@ -102,6 +102,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Js\controllers.js" />
+    <Content Include="Js\filters.js" />
+    <Content Include="Js\services.js" />
+    <Content Include="Js\directives.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

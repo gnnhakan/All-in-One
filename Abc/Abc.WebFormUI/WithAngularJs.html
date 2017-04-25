@@ -11,8 +11,11 @@
     <script src="Scripts/angular.min.js"></script>
 
     <script src="Js/app.js"></script>
+    <script src="Js/controllers.js"></script>
+    <script src="Js/services.js"></script>
+    <script type="text/javascript"> </script>
 </head>
-<body ng-app="app">
+<body ng-app="demoapp">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -20,26 +23,53 @@
                     <img alt="Brand" height="35" src="Img/Logo.png">
                 </a>
             </div>
+            <div class="navbar-header navbar-right">
+                <a class="navbar-brand">
+                    cart summary
+                </a>
+            </div>
         </div>
     </nav>
 
-    <div class="row">
+    <div class="row" ng-controller="ProductsController">
         <div class="col-md-3" ng-controller="CategoriesController">
+            <div class="list-group">
+                <a
+                   ng-click="getProducts()"
+                   ng-class="getCategoryCss()">
+                    All Categories
+                </a>
+                <a ng-repeat="cat in catagories" class="list-group-item"
+                   ng-click="getProducts(cat.categoryID)"
+                   ng-class="getCategoryCss(cat.categoryID)">
+                    {{cat.categoryName}}
+                </a>
 
-            <table class="table table-striped">
-                <tr ng-repeat="cat in catagories">
-                    <td><a >{{cat.categoryName}} </a></td>
-                   
-                </tr>
-            </table>
+            </div>
+            
+            
         </div>
-        <div class="col-md-9" ng-controller="ProductsController">
-            <table class="table table-striped">
-                <tr ng-repeat="prd in products">
-                    <td><a>{{prd.productID}} </a></td>
+        <div class="col-md-9">
+            <div class="col-md-3 col-sm-6" ng-repeat="prd in products">
+                <span class="thumbnail">
+                    <img ng-src="http://localhost:51601/img/DemoProduct.png" alt="...." />
+                    <h4>{{prd.productName}}</h4>
+                    <div class="ratings">
+                        some rating
+                    </div>
+                    <p>{{prd.productName}} </p>
+                    <hr class="line">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <p class="price">${{prd.unitPrice}}</p>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <button class="btn btn-info right" ng-click="AddProductToCart(prd)">Buy Item</button>
+                        </div>
 
-                </tr>
-            </table>
+                    </div>
+                </span>
+            </div>
         </div>
     </div>
 </body>

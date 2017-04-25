@@ -61,20 +61,16 @@ namespace Abc.WebAPI.Controllers
             entities.Configuration.ProxyCreationEnabled = false;
             return entities.Products.ToList();
         }
-        //get by id 
-        public HttpResponseMessage LoadProductById(int id)
-        {
 
-            var entity = entities.Products.FirstOrDefault(e => e.ProductID == id);
-            if (entity != null)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, entity);
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                    "Product ID " + id.ToString() + " not found");
-            }
+        [HttpGet] //orign hatasını çöz...
+        public IEnumerable<Product> LoadProducts(int id)
+        {
+            entities.Configuration.ProxyCreationEnabled = false;
+            return entities.Products.Where(x => x.CategoryID == id).ToList();
+                
+                
+              //  FirstOrDefault(e => e.CategoryID == id);
+            //return aa.ToList();
         }
         //Delete
         public HttpResponseMessage Delete(int id)
